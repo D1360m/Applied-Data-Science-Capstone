@@ -83,14 +83,14 @@ def scatter_graph(site_dropdown, payload_slider):
         filtered_df = spacex_df[(spacex_df['Payload Mass (kg)']>=payload_slider[0]) # Higher payloads than the min slider value 
         &(spacex_df['Payload Mass (kg)']<=payload_slider[1])]   # Lower payload values than max slider values... Payload within slider selected value range.
         scatterplot = px.scatter(data_frame=filtered_df, x="Payload Mass (kg)", y="class", 
-        color="Booster Version Category")
-        return scatterplot
+        color="Booster Version Category", title="Correlation between Payload and Success for all sites")
+        return scatterplot   
     else:
         specific_df=spacex_df.loc[spacex_df['Launch Site'] == site_dropdown]
         filtered_df = specific_df[(specific_df['Payload Mass (kg)']>=payload_slider[0])
         &(spacex_df['Payload Mass (kg)']<=payload_slider[1])]
         scatterplot = px.scatter(data_frame=filtered_df, x="Payload Mass (kg)", y="class", 
-        color="Booster Version Category")
+               color="Booster Version Category", title="Correlation Payload and Success for individual sites")
         return scatterplot
 
 # Run the app
